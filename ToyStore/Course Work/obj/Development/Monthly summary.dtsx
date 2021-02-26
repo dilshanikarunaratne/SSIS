@@ -1,0 +1,909 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/28/2020 3:49:50 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-BIUMIPC"
+  DTS:CreatorName="DESKTOP-BIUMIPC\U00001"
+  DTS:DTSID="{972A36FA-7327-442B-9063-3E031D7BFF77}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Monthly summary"
+  DTS:PackageType="5"
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{D052BD98-B8F9-466D-88CB-F9F48F7835F8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{09979C82-10FA-4418-9486-36277A073FBC}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.SOURCE_DATABASE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=SOURCE_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1AEFAC24-C4A8-440C-AE68-193E30CCA4B8}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.SOURCE_DATABASE 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=SOURCE_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1B1C2B79-BF23-4AD2-BCFA-F1E84AD44976}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.SOURCE_DATABASE 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=SOURCE_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4B2AABD6-894F-4FF1-BBD4-7C664947F76D}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.TARGET_DATABASE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=TARGET_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AC030EDF-5C4C-4A0D-BE9C-089B408ADFCD}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.TARGET_DATABASE 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=TARGET_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE 2]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{03A9E832-521E-4C37-8B63-BCC876B20738}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.TARGET_DATABASE 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=TARGET_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Monthly Summary"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C078442C-AD53-4FEE-8DC4-6D860CD5E58A}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Monthly Summary"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Monthly Summary\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Monthly Summary\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Monthly Summary\Aggregate.Inputs[Aggregate Input 1].Columns[Prod_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_id"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Prod_id]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Aggregate.Inputs[Aggregate Input 1].Columns[Store_id]"
+                      cachedDataType="i4"
+                      cachedName="Store_id"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Store_id]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Aggregate.Inputs[Aggregate Input 1].Columns[MonthNum]"
+                      cachedDataType="i4"
+                      cachedName="MonthNum"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[MonthNum]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Aggregate.Inputs[Aggregate Input 1].Columns[Month]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Month"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Aggregate.Inputs[Aggregate Input 1].Columns[Qty]"
+                      cachedDataType="i4"
+                      cachedName="Qty"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Qty]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Aggregate.Inputs[Aggregate Input 1].Columns[Amount_sold]"
+                      cachedDataType="i4"
+                      cachedName="Amount_sold"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Amount_sold]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Aggregate.Inputs[Aggregate Input 1].Columns[Unit_price]"
+                      cachedDataType="i4"
+                      cachedName="Unit_price"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Unit_price]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">3</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_id]"
+                      name="Prod_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Prod_id]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Store_id]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Store_id]"
+                      name="Store_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Store_id]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[MonthNum]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[MonthNum]"
+                      name="MonthNum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[MonthNum]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Month]"
+                      name="Month">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Month]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Qty]"
+                      dataType="i8"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Qty]"
+                      name="Qty">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Qty]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Amount_sold]"
+                      dataType="i8"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Amount_sold]"
+                      name="Amount_sold">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Amount_sold]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Unit_price]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Unit_price]"
+                      name="Unit_price">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Unit_price]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Monthly Summary\Monthly Summary"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Monthly Summary"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Monthly_summary_Fact]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Monthly Summary\Monthly Summary.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].Columns[Prod_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_id"
+                      externalMetadataColumnId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Prod_id]"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Prod_id]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].Columns[Store_id]"
+                      cachedDataType="i4"
+                      cachedName="Store_id"
+                      externalMetadataColumnId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Store_id]"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Store_id]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].Columns[MonthNum]"
+                      cachedDataType="i4"
+                      cachedName="MonthNum"
+                      externalMetadataColumnId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[MonthNum]"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[MonthNum]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].Columns[Month]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Month"
+                      externalMetadataColumnId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Month]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].Columns[Amount_sold]"
+                      cachedDataType="i8"
+                      cachedName="Amount_sold"
+                      externalMetadataColumnId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Amount_sold]"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Amount_sold]" />
+                    <inputColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].Columns[Qty]"
+                      cachedDataType="i8"
+                      cachedName="Qty"
+                      externalMetadataColumnId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Qty_sold]"
+                      lineageId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1].Columns[Qty]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Store_id]"
+                      dataType="i4"
+                      name="Store_id" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Prod_id" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[MonthNum]"
+                      dataType="i4"
+                      name="MonthNum" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Qty_sold]"
+                      dataType="i4"
+                      name="Qty_sold" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input].ExternalColumns[Amount_sold]"
+                      dataType="i4"
+                      name="Amount_sold" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Monthly Summary\Monthly Summary.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Monthly Summary.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Monthly Summary.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Monthly Summary.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Monthly Summary\Order Details Fact"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Order Details Fact"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Order_Details_Fact]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT a.Store_id, a.Prod_id, a.Unit_price, b.MonthNum, b."Month", SUM(a.Qty) AS Qty, SUM(a.Amount_sold) AS Amount_sold
+FROM   dbo.Order_Details_Fact a, dbo.Dim_date b
+WHERE a.Date_key = b.Date_key 
+GROUP BY b.MonthNum, b."Month", a.Store_id, a.Prod_id, a.Unit_price</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Monthly Summary\Order Details Fact.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Prod_id]"
+                      length="5"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Prod_id]"
+                      name="Prod_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Store_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Store_id]"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Store_id]"
+                      name="Store_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[MonthNum]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[MonthNum]"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[MonthNum]"
+                      name="MonthNum"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Month]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      length="15"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Month]"
+                      name="Month"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Amount_sold]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Amount_sold]"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Amount_sold]"
+                      name="Amount_sold"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Qty]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Qty]"
+                      name="Qty"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Unit_price]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Unit_price]"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].Columns[Unit_price]"
+                      name="Unit_price"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Prod_id" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Store_id]"
+                      dataType="i4"
+                      name="Store_id" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[MonthNum]"
+                      dataType="i4"
+                      name="MonthNum" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Amount_sold]"
+                      dataType="i4"
+                      name="Amount_sold" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Qty]"
+                      dataType="i4"
+                      name="Qty" />
+                    <externalMetadataColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output].ExternalColumns[Unit_price]"
+                      dataType="i4"
+                      name="Unit_price" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Prod_id]"
+                      name="Prod_id" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Store_id]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Store_id]"
+                      name="Store_id" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[MonthNum]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[MonthNum]"
+                      name="MonthNum" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Month]"
+                      name="Month" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Amount_sold]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Amount_sold]"
+                      name="Amount_sold" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Qty]"
+                      name="Qty" />
+                    <outputColumn
+                      refId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Unit_price]"
+                      dataType="i4"
+                      lineageId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Error Output].Columns[Unit_price]"
+                      name="Unit_price" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Monthly Summary.Paths[Aggregate Output 1]"
+              endId="Package\Monthly Summary\Monthly Summary.Inputs[OLE DB Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Monthly Summary\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Monthly Summary.Paths[OLE DB Source Output]"
+              endId="Package\Monthly Summary\Aggregate.Inputs[Aggregate Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Monthly Summary\Order Details Fact.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Monthly Summary"
+          TopLeft="53.7499991990623,82.1052647033228" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Monthly Summary">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166.666666666667,42.6666666666667"
+          Id="Package\Monthly Summary\Order Details Fact"
+          TopLeft="22.4999996647239,26.0000004893855" />
+        <NodeLayout
+          Size="165.333333333334,42.6666666666667"
+          Id="Package\Monthly Summary\Monthly Summary"
+          TopLeft="386.874994235114,26.6842110285799" />
+        <NodeLayout
+          Size="129.333333333334,42.6666666666667"
+          Id="Package\Monthly Summary\Aggregate"
+          TopLeft="224.374996656552,26.6842110285799" />
+        <EdgeLayout
+          Id="Package\Monthly Summary.Paths[OLE DB Source Output]"
+          TopLeft="189.166666331391,47.675439092316">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.2083303251615,0"
+              Start="0,0"
+              End="27.7083303251615,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.7083303251615,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Monthly Summary.Paths[Aggregate Output 1]"
+          TopLeft="353.708329989885,48.0175443619132">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33.1666642452289,0"
+              Start="0,0"
+              End="25.6666642452289,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25.6666642452289,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Monthly Summary\Order Details Fact">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Monthly Summary\Monthly Summary">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

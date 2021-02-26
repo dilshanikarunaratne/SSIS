@@ -1,0 +1,1038 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/28/2020 2:59:09 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-BIUMIPC"
+  DTS:CreatorName="DESKTOP-BIUMIPC\U00001"
+  DTS:DTSID="{740FB59E-DB95-47EF-AB07-9C5E3806D9D0}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Date"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{9F2A48E7-2F42-4F51-9D89-63BB1363414E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0CF2B11F-32A3-4995-BD3C-5D71B6F64ACF}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.SOURCE_DATABASE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=SOURCE_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FF5F0115-A437-4C2F-B526-623B1B9E6549}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.TARGET_DATABASE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=TARGET_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4536CE3F-D6F9-4385-913C-F5B4E3CFAB26}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.TARGET_DATABASE 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=TARGET_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{9A1E4290-DE2D-4207-A525-6C84C894DBD2}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Dilshani\Downloads\DimDates.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{8F7B3473-EA1E-49FC-B469-BE46881B86F1}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\Dilshani\Downloads\DimDates.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 2]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{13BDDBB5-55B2-496F-AC74-221B080FD151}"
+      DTS:ObjectName="Excel Connection Manager 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\Dilshani\Downloads\DimDates.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 3]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{A90A08BB-25C2-4BC3-8BB0-EE257B3CC184}"
+      DTS:ObjectName="Excel Connection Manager 3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\Dilshani\Downloads\DimDates.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{14F57B31-E8DA-44FA-B806-3C9EA887FFBD}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\Dilshani\Downloads\DimDates.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DateNum"
+              DTS:DTSID="{F995D2D5-28F7-42DA-B637-50BBAA324B7F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Date"
+              DTS:DTSID="{C7493BE1-DCC3-44B0-9D2C-5BFE33322E18}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearMonthNum"
+              DTS:DTSID="{B97C78E1-9028-437E-A99A-13F9B5EF0E9F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Calendar_Quarter"
+              DTS:DTSID="{67E5E127-396F-4D2C-A94D-85E5EDABFAEB}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MonthNum"
+              DTS:DTSID="{9F45B7DE-2C6B-45E3-AE68-459282DAC0FA}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MonthName"
+              DTS:DTSID="{CBC018DB-A211-4E09-B842-43613697E134}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MonthShortName"
+              DTS:DTSID="{3A53F995-7158-42CF-AEE2-C55A58DA46E1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="WeekNum"
+              DTS:DTSID="{55EA9F29-62C5-4E88-94F8-3F6144D4EF9A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DayNumOfYear"
+              DTS:DTSID="{FEC24263-9EB6-4EDD-9E06-5642644CBDD3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DayNumOfMonth"
+              DTS:DTSID="{7A5A209C-65B1-41A9-89EF-7836CED01EFD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DayNumOfWeek"
+              DTS:DTSID="{F19CE5D8-CCF0-457B-8491-EF3E22BC6252}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DayName"
+              DTS:DTSID="{DF50D2DF-56D0-4F97-8641-9455AD2A5967}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DayShortName"
+              DTS:DTSID="{E0376B3D-083A-43AB-97CE-E0AE062311AD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Quarter"
+              DTS:DTSID="{FD043FF1-2798-4B9E-A8D2-A8D587565D81}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="YearQuarterNum"
+              DTS:DTSID="{06FACBF9-A6D4-4AE0-A293-65A5C22B0909}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DayNumOfQuarter"
+              DTS:DTSID="{3456E4E3-34FA-4730-8D1F-1EE548A3B5E6}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Date"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E992FC67-0A6A-4D3F-8E2B-10F7CD4299CC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Date"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Date\Date CSV"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Date CSV"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date\Date CSV.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Date\Date CSV.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DateNum]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DateNum]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DateNum]"
+                      name="DateNum"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[Date]"
+                      name="Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[YearMonthNum]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[YearMonthNum]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[YearMonthNum]"
+                      name="YearMonthNum"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[Calendar_Quarter]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[Calendar_Quarter]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[Calendar_Quarter]"
+                      name="Calendar_Quarter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[MonthNum]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[MonthNum]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[MonthNum]"
+                      name="MonthNum"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[MonthName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[MonthName]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[MonthName]"
+                      name="MonthName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[MonthShortName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[MonthShortName]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[MonthShortName]"
+                      name="MonthShortName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[WeekNum]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[WeekNum]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[WeekNum]"
+                      name="WeekNum"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayNumOfYear]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayNumOfYear]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayNumOfYear]"
+                      name="DayNumOfYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayNumOfMonth]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayNumOfMonth]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayNumOfMonth]"
+                      name="DayNumOfMonth"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayNumOfWeek]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayNumOfWeek]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayNumOfWeek]"
+                      name="DayNumOfWeek"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayName]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayName]"
+                      name="DayName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayShortName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayShortName]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayShortName]"
+                      name="DayShortName"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[Quarter]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[Quarter]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[Quarter]"
+                      name="Quarter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[YearQuarterNum]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[YearQuarterNum]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[YearQuarterNum]"
+                      name="YearQuarterNum"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayNumOfQuarter]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayNumOfQuarter]"
+                      length="50"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayNumOfQuarter]"
+                      name="DayNumOfQuarter"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DateNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DateNum" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Date" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[YearMonthNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="YearMonthNum" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[Calendar_Quarter]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Calendar_Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[MonthNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MonthNum" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[MonthName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MonthName" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[MonthShortName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MonthShortName" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[WeekNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="WeekNum" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayNumOfYear]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DayNumOfYear" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayNumOfMonth]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DayNumOfMonth" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayNumOfWeek]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DayNumOfWeek" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DayName" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayShortName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DayShortName" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[Quarter]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Quarter" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[YearQuarterNum]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="YearQuarterNum" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Output].ExternalColumns[DayNumOfQuarter]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DayNumOfQuarter" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Date\Date CSV.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date\Date CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Date\Dim Date"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Dim Date"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Date\Dim Date.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].Columns[MonthNum]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MonthNum"
+                      externalMetadataColumnId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[MonthNum]"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[MonthNum]" />
+                    <inputColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].Columns[Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Date"
+                      externalMetadataColumnId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_key]"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[Date]" />
+                    <inputColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].Columns[YearQuarterNum]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="YearQuarterNum"
+                      externalMetadataColumnId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[YearQuarterNum]" />
+                    <inputColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].Columns[DayName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DayName"
+                      externalMetadataColumnId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[DayName]" />
+                    <inputColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].Columns[MonthName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MonthName"
+                      externalMetadataColumnId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      lineageId="Package\Date\Date CSV.Outputs[Flat File Source Output].Columns[MonthName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[Date_key]"
+                      dataType="dbTimeStamp"
+                      name="Date_key" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="i4"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[Month]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Month" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[MonthNum]"
+                      dataType="i4"
+                      name="MonthNum" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[Day]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Day" />
+                    <externalMetadataColumn
+                      refId="Package\Date\Dim Date.Inputs[OLE DB Destination Input].ExternalColumns[Time]"
+                      dataType="dbTime2"
+                      name="Time"
+                      scale="7" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Date\Dim Date.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Date\Dim Date.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Date\Dim Date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Date\Dim Date.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Date\Dim Date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Date\Dim Date.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Date.Paths[Flat File Source Output]"
+              endId="Package\Date\Dim Date.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Date\Date CSV.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="102.666666666667,42.6666666666667"
+          Id="Package\Date"
+          TopLeft="55.6249991711229,107.421054653514" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Date">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="124,42.6666666666667"
+          Id="Package\Date\Dim Date"
+          TopLeft="347.499994821847,48.5789482827993" />
+        <NodeLayout
+          Size="126.666666666667,42.6666666666667"
+          Id="Package\Date\Date CSV"
+          TopLeft="75.6249988730997,49.2631588219936" />
+        <EdgeLayout
+          Id="Package\Date.Paths[Flat File Source Output]"
+          TopLeft="202.291665539766,70.2543868857298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="145.208329282081,0"
+              Start="0,0"
+              End="137.708329282081,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="137.708329282081,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Date\Dim Date">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

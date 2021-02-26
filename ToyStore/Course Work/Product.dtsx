@@ -1,0 +1,2221 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/28/2020 2:42:07 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-BIUMIPC"
+  DTS:CreatorName="DESKTOP-BIUMIPC\U00001"
+  DTS:DTSID="{B789C04B-E609-4AD6-A63C-77E2845E8C31}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.132"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Product"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{78938783-9C30-4585-8022-4F5EE7E6A195}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{8FE8EF10-2A1F-4F8B-8C71-5CA874C77C38}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.SOURCE_DATABASE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=SOURCE_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B0577513-358C-45D7-B88D-1CA432AC8A0C}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.SOURCE_DATABASE 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=SOURCE_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{53E56557-BE63-4C6E-8E5A-3D85609ED83F}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.TARGET_DATABASE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=TARGET_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0D938613-DDDF-4E33-B4EB-EE653454A3B6}"
+      DTS:ObjectName="DESKTOP-BIUMIPC.TARGET_DATABASE 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-BIUMIPC;Initial Catalog=TARGET_DATABASE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Product"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{D1FEEB19-647B-4295-A6F4-508FAAD1D271}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Product"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Product\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Product\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Merge Join.Inputs[Merge Join Left Input].Columns[Prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_cat"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Product\Sort 1.Outputs[Sort Output].Columns[Prod_cat]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join.Inputs[Merge Join Left Input].Columns[Prod_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_type"
+                      lineageId="Package\Product\Sort 1.Outputs[Sort Output].Columns[Prod_type]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join.Inputs[Merge Join Left Input].Columns[Type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Type_description"
+                      lineageId="Package\Product\Sort 1.Outputs[Sort Output].Columns[Type_description]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Product\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Merge Join.Inputs[Merge Join Right Input].Columns[Prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_cat"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Product\Sort 2.Outputs[Sort Output].Columns[Prod_cat]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join.Inputs[Merge Join Right Input].Columns[Category_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Category_description"
+                      lineageId="Package\Product\Sort 2.Outputs[Sort Output].Columns[Category_description]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Product\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Prod_cat]"
+                      name="Prod_cat"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join.Inputs[Merge Join Left Input].Columns[Prod_cat]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Prod_type]"
+                      name="Prod_type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join.Inputs[Merge Join Left Input].Columns[Prod_type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Type_description]"
+                      name="Type_description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join.Inputs[Merge Join Left Input].Columns[Type_description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Category_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Category_description]"
+                      name="Category_description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join.Inputs[Merge Join Right Input].Columns[Category_description]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Merge Join 1"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Product\Merge Join 1.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Merge Join 1.Inputs[Merge Join Left Input].Columns[Prod_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_type"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Prod_type]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join 1.Inputs[Merge Join Left Input].Columns[Prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_cat"
+                      lineageId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Prod_cat]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join 1.Inputs[Merge Join Left Input].Columns[Type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Type_description"
+                      lineageId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Type_description]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join 1.Inputs[Merge Join Left Input].Columns[Category_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Category_description"
+                      lineageId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Category_description]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Product\Merge Join 1.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Merge Join 1.Inputs[Merge Join Right Input].Columns[Prod_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Prod_type"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Prod_type]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join 1.Inputs[Merge Join Right Input].Columns[Prod_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_id"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Prod_id]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join 1.Inputs[Merge Join Right Input].Columns[Description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Description"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join 1.Inputs[Merge Join Right Input].Columns[Measure_unit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Measure_unit"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Measure_unit]" />
+                    <inputColumn
+                      refId="Package\Product\Merge Join 1.Inputs[Merge Join Right Input].Columns[Qty_in_hand]"
+                      cachedDataType="i4"
+                      cachedName="Qty_in_hand"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Qty_in_hand]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Product\Merge Join 1.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Prod_cat]"
+                      name="Prod_cat">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join 1.Inputs[Merge Join Left Input].Columns[Prod_cat]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Type_description]"
+                      name="Type_description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join 1.Inputs[Merge Join Left Input].Columns[Type_description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Category_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Category_description]"
+                      name="Category_description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join 1.Inputs[Merge Join Left Input].Columns[Category_description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Prod_type]"
+                      name="Prod_type"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join 1.Inputs[Merge Join Left Input].Columns[Prod_type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Prod_id]"
+                      name="Prod_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join 1.Inputs[Merge Join Right Input].Columns[Prod_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Description]"
+                      name="Description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join 1.Inputs[Merge Join Right Input].Columns[Description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Measure_unit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Measure_unit]"
+                      name="Measure_unit">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join 1.Inputs[Merge Join Right Input].Columns[Measure_unit]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Qty_in_hand]"
+                      dataType="i4"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Qty_in_hand]"
+                      name="Qty_in_hand">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Product\Merge Join 1.Inputs[Merge Join Right Input].Columns[Qty_in_hand]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Product"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Product"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Product\Product.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Product\Product.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Prod_id]"
+                      length="5"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Prod_id]"
+                      name="Prod_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      length="50"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Measure_unit]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Measure_unit]"
+                      length="10"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Measure_unit]"
+                      name="Measure_unit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Qty_in_hand]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Qty_in_hand]"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Qty_in_hand]"
+                      name="Qty_in_hand"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Prod_type]"
+                      length="10"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Prod_type]"
+                      name="Prod_type"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Prod_id" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Measure_unit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Measure_unit" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Qty_in_hand]"
+                      dataType="i4"
+                      name="Qty_in_hand" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Output].ExternalColumns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Prod_type" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Product\Product.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Prod_id]"
+                      name="Prod_id" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Measure_unit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Measure_unit]"
+                      name="Measure_unit" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Qty_in_hand]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Qty_in_hand]"
+                      name="Qty_in_hand" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[Prod_type]"
+                      name="Prod_type" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Product Category"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Product Category"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Product_category]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Product\Product Category.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Product\Product Category.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Product Category.Outputs[OLE DB Source Output].Columns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product Category.Outputs[OLE DB Source Output].ExternalColumns[Prod_cat]"
+                      length="5"
+                      lineageId="Package\Product\Product Category.Outputs[OLE DB Source Output].Columns[Prod_cat]"
+                      name="Prod_cat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Product Category.Outputs[OLE DB Source Output].Columns[Category_description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product Category.Outputs[OLE DB Source Output].ExternalColumns[Category_description]"
+                      length="30"
+                      lineageId="Package\Product\Product Category.Outputs[OLE DB Source Output].Columns[Category_description]"
+                      name="Category_description"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Category.Outputs[OLE DB Source Output].ExternalColumns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Prod_cat" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Category.Outputs[OLE DB Source Output].ExternalColumns[Category_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Category_description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Product\Product Category.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Product Category.Outputs[OLE DB Source Error Output].Columns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Product Category.Outputs[OLE DB Source Error Output].Columns[Prod_cat]"
+                      name="Prod_cat" />
+                    <outputColumn
+                      refId="Package\Product\Product Category.Outputs[OLE DB Source Error Output].Columns[Category_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Product\Product Category.Outputs[OLE DB Source Error Output].Columns[Category_description]"
+                      name="Category_description" />
+                    <outputColumn
+                      refId="Package\Product\Product Category.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product Category.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Product\Product Category.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product Category.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Product Dim"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Product Dim"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_product]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Product\Product Dim.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-BIUMIPC.TARGET_DATABASE 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].Columns[Prod_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_type"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Prod_type]"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Prod_type]" />
+                    <inputColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].Columns[Qty_in_hand]"
+                      cachedDataType="i4"
+                      cachedName="Qty_in_hand"
+                      externalMetadataColumnId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Qty_in_hand]"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Qty_in_hand]" />
+                    <inputColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].Columns[Measure_unit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Measure_unit"
+                      externalMetadataColumnId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Measure_unit]"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Measure_unit]" />
+                    <inputColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].Columns[Prod_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_id"
+                      externalMetadataColumnId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Prod_id]"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Prod_id]" />
+                    <inputColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].Columns[Prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_cat"
+                      externalMetadataColumnId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Prod_cat]"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Prod_cat]" />
+                    <inputColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].Columns[Type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Type_description"
+                      externalMetadataColumnId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Type_description]"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Type_description]" />
+                    <inputColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].Columns[Category_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Category_description"
+                      externalMetadataColumnId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Category_description]"
+                      lineageId="Package\Product\Merge Join 1.Outputs[Merge Join Output].Columns[Category_description]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Prod_id" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Measure_unit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Measure_unit" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Qty_in_hand]"
+                      dataType="i4"
+                      name="Qty_in_hand" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Prod_type" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Type_description" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Prod_cat" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Dim.Inputs[OLE DB Destination Input].ExternalColumns[Category_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="Category_description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Product\Product Dim.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Product\Product Dim.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Product Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Product\Product Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product Dim.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Product Type"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Product Type"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Product_type]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Product\Product Type.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-BIUMIPC.SOURCE_DATABASE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Product\Product Type.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product Type.Outputs[OLE DB Source Output].ExternalColumns[Prod_type]"
+                      length="5"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Prod_type]"
+                      name="Prod_type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product Type.Outputs[OLE DB Source Output].ExternalColumns[Type_description]"
+                      length="50"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Type_description]"
+                      name="Type_description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Product\Product Type.Outputs[OLE DB Source Output].ExternalColumns[Prod_cat]"
+                      length="5"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Prod_cat]"
+                      name="Prod_cat"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Output].ExternalColumns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Prod_type" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Output].ExternalColumns[Type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Type_description" />
+                    <externalMetadataColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Output].ExternalColumns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="Prod_cat" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Product\Product Type.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[Prod_type]"
+                      name="Prod_type" />
+                    <outputColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[Type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[Type_description]"
+                      name="Type_description" />
+                    <outputColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[Prod_cat]"
+                      name="Prod_cat" />
+                    <outputColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Product\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Sort.Inputs[Sort Input].Columns[Prod_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_id"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Prod_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort.Inputs[Sort Input].Columns[Description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Description"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Description]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort.Inputs[Sort Input].Columns[Measure_unit]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Measure_unit"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Measure_unit]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort.Inputs[Sort Input].Columns[Qty_in_hand]"
+                      cachedDataType="i4"
+                      cachedName="Qty_in_hand"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Qty_in_hand]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort.Inputs[Sort Input].Columns[Prod_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Prod_type"
+                      lineageId="Package\Product\Product.Outputs[OLE DB Source Output].Columns[Prod_type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Product\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Sort.Outputs[Sort Output].Columns[Prod_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Prod_id]"
+                      name="Prod_id">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product.Outputs[OLE DB Source Output].Columns[Prod_id]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort.Outputs[Sort Output].Columns[Description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Description]"
+                      name="Description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product.Outputs[OLE DB Source Output].Columns[Description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort.Outputs[Sort Output].Columns[Measure_unit]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Measure_unit]"
+                      name="Measure_unit">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product.Outputs[OLE DB Source Output].Columns[Measure_unit]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort.Outputs[Sort Output].Columns[Qty_in_hand]"
+                      dataType="i4"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Qty_in_hand]"
+                      name="Qty_in_hand">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product.Outputs[OLE DB Source Output].Columns[Qty_in_hand]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort.Outputs[Sort Output].Columns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Product\Sort.Outputs[Sort Output].Columns[Prod_type]"
+                      name="Prod_type"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product.Outputs[OLE DB Source Output].Columns[Prod_type]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Sort 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Product\Sort 1.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Sort 1.Inputs[Sort Input].Columns[Prod_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_type"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Prod_type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort 1.Inputs[Sort Input].Columns[Type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Type_description"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Type_description]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort 1.Inputs[Sort Input].Columns[Prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_cat"
+                      lineageId="Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Prod_cat]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Product\Sort 1.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Sort 1.Outputs[Sort Output].Columns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Sort 1.Outputs[Sort Output].Columns[Prod_type]"
+                      name="Prod_type">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Prod_type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort 1.Outputs[Sort Output].Columns[Type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Product\Sort 1.Outputs[Sort Output].Columns[Type_description]"
+                      name="Type_description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Type_description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort 1.Outputs[Sort Output].Columns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Sort 1.Outputs[Sort Output].Columns[Prod_cat]"
+                      name="Prod_cat"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product Type.Outputs[OLE DB Source Output].Columns[Prod_cat]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Sort 2"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 2"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Product\Sort 2.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Sort 2.Inputs[Sort Input].Columns[Prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_cat"
+                      lineageId="Package\Product\Product Category.Outputs[OLE DB Source Output].Columns[Prod_cat]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort 2.Inputs[Sort Input].Columns[Category_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Category_description"
+                      lineageId="Package\Product\Product Category.Outputs[OLE DB Source Output].Columns[Category_description]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Product\Sort 2.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Sort 2.Outputs[Sort Output].Columns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Sort 2.Outputs[Sort Output].Columns[Prod_cat]"
+                      name="Prod_cat"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product Category.Outputs[OLE DB Source Output].Columns[Prod_cat]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort 2.Outputs[Sort Output].Columns[Category_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Product\Sort 2.Outputs[Sort Output].Columns[Category_description]"
+                      name="Category_description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Product Category.Outputs[OLE DB Source Output].Columns[Category_description]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Product\Sort 3"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort 3"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Product\Sort 3.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Product\Sort 3.Inputs[Sort Input].Columns[Prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_cat"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Prod_cat]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort 3.Inputs[Sort Input].Columns[Type_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Type_description"
+                      lineageId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Type_description]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort 3.Inputs[Sort Input].Columns[Prod_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="Prod_type"
+                      lineageId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Prod_type]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Product\Sort 3.Inputs[Sort Input].Columns[Category_description]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="Category_description"
+                      lineageId="Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Category_description]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Product\Sort 3.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Prod_cat]"
+                      name="Prod_cat">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Prod_cat]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Type_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Type_description]"
+                      name="Type_description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Type_description]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Prod_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Prod_type]"
+                      name="Prod_type"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Prod_type]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Category_description]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\Product\Sort 3.Outputs[Sort Output].Columns[Category_description]"
+                      name="Category_description">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Product\Merge Join.Outputs[Merge Join Output].Columns[Category_description]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Product.Paths[Merge Join Output]"
+              endId="Package\Product\Product Dim.Inputs[OLE DB Destination Input]"
+              name="Merge Join Output"
+              startId="Package\Product\Merge Join 1.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Product.Paths[Merge Join Output1]"
+              endId="Package\Product\Sort 3.Inputs[Sort Input]"
+              name="Merge Join Output"
+              startId="Package\Product\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Product.Paths[OLE DB Source Output]"
+              endId="Package\Product\Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Product\Product.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Product.Paths[OLE DB Source Output1]"
+              endId="Package\Product\Sort 1.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Product\Product Type.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Product.Paths[OLE DB Source Output2]"
+              endId="Package\Product\Sort 2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Product\Product Category.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Product.Paths[Sort Output]"
+              endId="Package\Product\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Product\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Product.Paths[Sort Output1]"
+              endId="Package\Product\Merge Join 1.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Product\Sort 3.Outputs[Sort Output]" />
+            <path
+              refId="Package\Product.Paths[Sort Output2]"
+              endId="Package\Product\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Product\Sort 2.Outputs[Sort Output]" />
+            <path
+              refId="Package\Product.Paths[Sort Output3]"
+              endId="Package\Product\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Product\Sort 1.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="116,42.6666666666667"
+          Id="Package\Product"
+          TopLeft="79.9999988079071,96.4736860264042" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Product">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="130,42.6666666666667"
+          Id="Package\Product\Product Type"
+          TopLeft="23.7499996460974,108.105265192708" />
+        <NodeLayout
+          Size="98.6666666666667,42.6666666666667"
+          Id="Package\Product\Sort"
+          TopLeft="182.374997364357,17.0789463252572" />
+        <NodeLayout
+          Size="108,42.6666666666667"
+          Id="Package\Product\Sort 2"
+          TopLeft="191.87499714084,206.824564455729" />
+        <NodeLayout
+          Size="108,42.6666666666667"
+          Id="Package\Product\Sort 3"
+          TopLeft="345.49999538064,86.7631575985298" />
+        <NodeLayout
+          Size="108,42.6666666666667"
+          Id="Package\Product\Sort 1"
+          TopLeft="186.249997224659,106.929825733353" />
+        <NodeLayout
+          Size="141.333333333334,42.6666666666667"
+          Id="Package\Product\Merge Join 1"
+          TopLeft="394.999994114041,13.6842107838871" />
+        <NodeLayout
+          Size="138,42.6666666666667"
+          Id="Package\Product\Product Dim"
+          TopLeft="491.249992679805,102.631580879153" />
+        <NodeLayout
+          Size="116,42.6666666666667"
+          Id="Package\Product\Product"
+          TopLeft="31.2499995343387,17.1052634798589" />
+        <NodeLayout
+          Size="132,42.6666666666667"
+          Id="Package\Product\Merge Join"
+          TopLeft="322.499995194376,164.140353427149" />
+        <NodeLayout
+          Size="134.666666666667,42.6666666666667"
+          Id="Package\Product\Product Category"
+          TopLeft="26.8749995995313,208.000003915084" />
+        <EdgeLayout
+          Id="Package\Product.Paths[Merge Join Output]"
+          TopLeft="487.88888300293,56.3508774505538">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72.3611096768751,46.2807034285992"
+              Start="0,0"
+              End="72.3611096768751,38.7807034285992">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.8231219168557" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.8231219168557"
+                    Point2="0,18.8231219168557"
+                    Point3="4,18.8231219168557" />
+                  <mssgle:LineSegment
+                    End="68.3611096768751,18.8231219168557" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68.3611096768751,18.8231219168557"
+                    Point2="72.3611096768751,18.8231219168557"
+                    Point3="72.3611096768751,22.8231219168557" />
+                  <mssgle:LineSegment
+                    End="72.3611096768751,38.7807034285992" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Product.Paths[Sort Output3]"
+          TopLeft="294.249997224659,128.263159066686">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.2499979697169,51.4327499160182"
+              Start="0,0"
+              End="20.7499979697169,51.4327499160182">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="12.3373482234507,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.3373482234507,0"
+                    Point2="16.3373482234507,0"
+                    Point3="16.3373482234507,4" />
+                  <mssgle:LineSegment
+                    End="16.3373482234507,47.4327499160182" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.3373482234507,47.4327499160182"
+                    Point2="16.3373482234507,51.4327499160182"
+                    Point3="20.3373482234507,51.4327499160182" />
+                  <mssgle:LineSegment
+                    End="20.7499979697169,51.4327499160182" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Product.Paths[Sort Output2]"
+          TopLeft="299.87499714084,228.157897789062">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="22.6249980535359,-36.9064332508021"
+              Start="0,0"
+              End="15.1249980535359,-36.9064332508021">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="9.08433622373162,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.08433622373162,0"
+                    Point2="13.0843362237316,0"
+                    Point3="13.0843362237316,-4" />
+                  <mssgle:LineSegment
+                    End="13.0843362237316,-32.9064332508021" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.0843362237316,-32.9064332508021"
+                    Point2="13.0843362237316,-36.9064332508021"
+                    Point3="17.0843362237316,-36.9064332508021" />
+                  <mssgle:LineSegment
+                    End="15.1249980535359,-36.9064332508021" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Product.Paths[Sort Output1]"
+          TopLeft="399.49999538064,86.7631575985298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66.166665400068,-30.4122801479761"
+              Start="0,0"
+              End="66.166665400068,-22.9122801479761">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-11.206140073988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-11.206140073988"
+                    Point2="0,-15.206140073988"
+                    Point3="4,-15.206140073988" />
+                  <mssgle:LineSegment
+                    End="62.166665400068,-15.206140073988" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62.166665400068,-15.206140073988"
+                    Point2="66.166665400068,-15.206140073988"
+                    Point3="66.166665400068,-19.206140073988" />
+                  <mssgle:LineSegment
+                    End="66.166665400068,-22.9122801479761" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Product.Paths[Sort Output]"
+          TopLeft="281.041664031024,36.7149118879055">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="113.958330083018,0"
+              Start="0,0"
+              End="106.458330083018,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="106.458330083018,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Product.Paths[OLE DB Source Output2]"
+          TopLeft="161.541666266198,228.74561751874">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30.3333308746418,0"
+              Start="0,0"
+              End="22.8333308746418,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="22.8333308746418,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Product.Paths[OLE DB Source Output1]"
+          TopLeft="153.749999646097,128.850878796364">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.4999975785614,0"
+              Start="0,0"
+              End="24.9999975785614,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="24.9999975785614,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Product.Paths[OLE DB Source Output]"
+          TopLeft="147.249999534339,38.4254382358914">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="35.1249978300184,0"
+              Start="0,0"
+              End="27.6249978300184,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.6249978300184,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Product.Paths[Merge Join Output1]"
+          TopLeft="388.499995194376,164.140353427149">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.0000001862645,-34.7105291619525"
+              Start="0,0"
+              End="11.0000001862645,-27.2105291619525">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-13.3552645809763" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-13.3552645809763"
+                    Point2="0,-17.3552645809763"
+                    Point3="4,-17.3552645809763" />
+                  <mssgle:LineSegment
+                    End="7.00000018626446,-17.3552645809763" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.00000018626446,-17.3552645809763"
+                    Point2="11.0000001862645,-17.3552645809763"
+                    Point3="11.0000001862645,-21.3552645809763" />
+                  <mssgle:LineSegment
+                    End="11.0000001862645,-27.2105291619525" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Product\Product Type">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Product\Product Dim">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Product\Product">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Product\Product Category">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
